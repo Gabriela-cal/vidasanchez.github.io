@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio | Vida Gabriela Sánchez Calva</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vida Gabriela Sánchez Calva | Portafolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      /* Colores vibrantes para modo claro */
+      --primary: #7c3aed;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --border: rgba(124, 58, 237, 0.1);
+      --shadow: rgba(124, 58, 237, 0.1);
+      --gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    [data-theme="dark"] {
+      /* Colores vibrantes para modo oscuro */
+      --primary: #a855f7;
+      --secondary: #f472b6;
+      --accent: #22d3ee;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --bg-primary: #0f0f23;
+      --bg-secondary: #1a1a2e;
+      --bg-card: rgba(26, 26, 46, 0.8);
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --border: rgba(168, 85, 247, 0.2);
+      --shadow: rgba(168, 85, 247, 0.2);
+      --gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,130 +51,91 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(-45deg, #f0f9ff, #e0f2fe, #bae6fd, #dbeafe);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease-in-out infinite;
-      color: #1e293b;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       overflow-x: hidden;
+      transition: all 0.3s ease;
+      line-height: 1.6;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Partículas flotantes */
+    /* Partículas animadas */
     .particles {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
       pointer-events: none;
+      z-index: -1;
     }
 
     .particle {
       position: absolute;
-      width: 6px;
-      height: 6px;
-      background: radial-gradient(circle, rgba(125, 211, 252, 0.6), rgba(186, 230, 253, 0.3));
+      width: 3px;
+      height: 3px;
+      background: var(--primary);
       border-radius: 50%;
-      animation: float 15s linear infinite;
+      animation: float 20s linear infinite;
+      opacity: 0.6;
     }
 
     @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
     }
 
-    nav {
+    /* Header con navegación */
+    .header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(240, 249, 255, 0.85);
-      backdrop-filter: blur(15px);
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 50px;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(125, 211, 252, 0.3);
-      transition: all 0.3s ease;
-      animation: slideDown 1s ease-out;
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    nav:hover {
-      background: rgba(240, 249, 255, 0.95);
-      box-shadow: 0 8px 32px rgba(125, 211, 252, 0.2);
     }
 
     .logo {
-      font-weight: 700;
-      font-size: 28px;
-      background: linear-gradient(135deg, #67e8f9, #22d3ee, #06b6d4);
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--gradient-main);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: pulse 2s ease-in-out infinite;
-      cursor: pointer;
+      background-clip: text;
       transition: transform 0.3s ease;
     }
 
     .logo:hover {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+      transform: scale(1.05) rotate(-2deg);
     }
 
     .nav-links {
-      list-style: none;
       display: flex;
-      gap: 40px;
-    }
-
-    .nav-links li {
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: calc(var(--i) * 0.2s);
-      opacity: 0;
-      transform: translateY(20px);
+      gap: 2rem;
+      list-style: none;
     }
 
     .nav-links a {
-      color: #1e293b;
+      color: var(--text-secondary);
       text-decoration: none;
-      position: relative;
       font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
       transition: all 0.3s ease;
-      padding: 10px 15px;
-      border-radius: 20px;
+      position: relative;
     }
 
     .nav-links a::before {
@@ -147,244 +145,263 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(125, 211, 252, 0.2), rgba(186, 230, 253, 0.3));
-      border-radius: 20px;
+      background: var(--gradient-accent);
       opacity: 0;
+      border-radius: 50px;
       transition: opacity 0.3s ease;
       z-index: -1;
     }
 
     .nav-links a:hover::before {
-      opacity: 1;
+      opacity: 0.1;
     }
 
     .nav-links a:hover {
-      transform: translateY(-3px);
-      color: #0891b2;
+      color: var(--primary);
+      transform: translateY(-2px);
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Botón tema */
+    .theme-toggle {
+      background: var(--gradient-main);
+      border: none;
+      padding: 0.7rem;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
     }
 
-    header {
-      height: 100vh;
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(180deg);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       text-align: center;
-      padding: 0 20px;
+      padding: 2rem;
       position: relative;
+      background: radial-gradient(ellipse at center, var(--border), transparent);
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(ellipse at center, rgba(125, 211, 252, 0.1), transparent);
-      animation: breathe 4s ease-in-out infinite;
+    .hero-content {
+      max-width: 800px;
+      animation: fadeInUp 1s ease-out;
     }
 
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.1); opacity: 0.6; }
-    }
-
-    header h1 {
-      font-size: 72px;
-      background: linear-gradient(135deg, #0891b2, #22d3ee, #67e8f9);
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: var(--gradient-secondary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
+      background-clip: text;
       animation: titleFloat 3s ease-in-out infinite;
-      text-shadow: 0 0 30px rgba(125, 211, 252, 0.3);
     }
 
-    @keyframes titleFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
     }
 
-    header p {
-      font-size: 24px;
-      color: #64748b;
-      max-width: 700px;
-      margin-top: 20px;
-      animation: fadeIn 2s ease-out 0.5s both;
-      line-height: 1.6;
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-main);
+      color: white;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 2px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px var(--shadow);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .section {
-      max-width: 1200px;
-      margin: 120px auto;
-      padding: 0 20px;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: sectionReveal 1s ease-out forwards;
+    @keyframes titleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    @keyframes sectionReveal {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Secciones */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .section-title {
-      font-size: 42px;
-      margin-bottom: 40px;
-      background: linear-gradient(135deg, #0891b2, #22d3ee);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 4rem;
+      background: var(--gradient-accent);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-align: center;
+      background-clip: text;
       position: relative;
-      animation: titleGlow 2s ease-in-out infinite;
-    }
-
-    @keyframes titleGlow {
-      0%, 100% { filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3)); }
-      50% { filter: drop-shadow(0 0 20px rgba(125, 211, 252, 0.6)); }
     }
 
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -1rem;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(135deg, #67e8f9, #22d3ee);
+      width: 100px;
+      height: 4px;
+      background: var(--gradient-main);
       border-radius: 2px;
-      animation: lineExpand 2s ease-out;
     }
 
-    @keyframes lineExpand {
-      from { width: 0; }
-      to { width: 80px; }
-    }
-
-    .about-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 60px;
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: center;
-      margin-top: 60px;
     }
 
-    .profile-card {
+    .profile-image {
+      position: relative;
       text-align: center;
-      animation: cardFloat 4s ease-in-out infinite;
-    }
-
-    @keyframes cardFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      33% { transform: translateY(-10px) rotate(1deg); }
-      66% { transform: translateY(-5px) rotate(-1deg); }
     }
 
     .profile-photo {
-      width: 220px;
-      height: 220px;
+      width: 300px;
+      height: 300px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid transparent;
-      background: linear-gradient(45deg, #67e8f9, #22d3ee, #06b6d4);
+      border: 6px solid transparent;
+      background: var(--gradient-secondary);
       background-clip: padding-box;
+      box-shadow: 0 20px 60px var(--shadow);
       transition: all 0.5s ease;
-      box-shadow: 0 20px 40px rgba(125, 211, 252, 0.3);
-      animation: photoSpin 10s linear infinite;
-    }
-
-    @keyframes photoSpin {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
+      animation: profileFloat 4s ease-in-out infinite;
     }
 
     .profile-photo:hover {
       transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 25px 50px rgba(125, 211, 252, 0.5);
     }
 
-    .about-text {
-      flex: 1;
-      animation: textSlideIn 1s ease-out 0.3s both;
+    @keyframes profileFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
-    @keyframes textSlideIn {
-      from { opacity: 0; transform: translateX(50px); }
-      to { opacity: 1; transform: translateX(0); }
+    .about-text h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     .about-text p {
-      font-size: 18px;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
       line-height: 1.8;
-      color: #475569;
-      margin-bottom: 30px;
     }
 
-    .skills-list {
-      margin-top: 30px;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
     }
 
-    .skill-tag {
-      display: inline-block;
-      background: linear-gradient(135deg, rgba(125, 211, 252, 0.2), rgba(186, 230, 253, 0.3));
-      color: #0891b2;
-      border: 2px solid rgba(125, 211, 252, 0.4);
-      border-radius: 25px;
-      padding: 8px 20px;
-      margin: 8px;
-      font-size: 16px;
-      font-weight: 500;
+    .skill-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
       transition: all 0.3s ease;
       cursor: pointer;
-      animation: tagBounce 2s ease-in-out infinite;
-      animation-delay: calc(var(--i) * 0.2s);
     }
 
-    @keyframes tagBounce {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
+    .skill-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px var(--shadow);
+      border-color: var(--primary);
     }
 
-    .skill-tag:hover {
-      transform: translateY(-8px) scale(1.05);
-      background: linear-gradient(135deg, rgba(125, 211, 252, 0.4), rgba(186, 230, 253, 0.5));
-      box-shadow: 0 10px 25px rgba(125, 211, 252, 0.3);
-      border-color: #22d3ee;
+    .skill-card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
+    .skill-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Projects Section */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 50px;
-      margin-top: 60px;
+      gap: 3rem;
     }
 
     .project-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
       border-radius: 25px;
-      padding: 30px;
       overflow: hidden;
       transition: all 0.5s ease;
-      border: 1px solid rgba(125, 211, 252, 0.3);
-      animation: cardSlideUp 1s ease-out;
-      animation-delay: calc(var(--i) * 0.2s);
-      animation-fill-mode: both;
       cursor: pointer;
       position: relative;
     }
@@ -396,7 +413,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
       transition: left 0.5s ease;
     }
 
@@ -404,38 +421,32 @@
       left: 100%;
     }
 
-    @keyframes cardSlideUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .project-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 25px 50px rgba(125, 211, 252, 0.4);
-      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-15px);
+      box-shadow: 0 30px 60px var(--shadow);
+      border-color: var(--primary);
     }
 
     .project-image {
+      height: 250px;
       position: relative;
-      width: 100%;
-      height: 220px;
       overflow: hidden;
-      border-radius: 15px;
-      margin-bottom: 25px;
+      border-radius: 15px 15px 0 0;
     }
 
     .project-image img {
-      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: all 0.8s ease;
-      border-radius: 15px;
     }
 
     .project-image img:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
       opacity: 0;
-      transform: scale(1.2) rotate(5deg);
+      transform: scale(1.2) rotate(3deg);
     }
 
     .project-image:hover img:nth-child(2) {
@@ -445,86 +456,142 @@
 
     .project-image:hover img:nth-child(1) {
       opacity: 0;
-      transform: scale(0.8) rotate(-5deg);
+      transform: scale(0.9) rotate(-3deg);
     }
 
-    .project-title {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #0891b2;
-      font-weight: 600;
-      animation: titleShimmer 3s ease-in-out infinite;
-    }
-
-    @keyframes titleShimmer {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
-    }
-
-    .project-description {
-      font-size: 16px;
-      color: #64748b;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .tech-tag {
-      display: inline-block;
-      background: linear-gradient(135deg, rgba(103, 232, 249, 0.2), rgba(34, 211, 238, 0.2));
-      color: #0891b2;
-      border-radius: 15px;
-      padding: 6px 14px;
-      margin: 4px;
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(125, 211, 252, 0.3);
-    }
-
-    .tech-tag:hover {
-      background: linear-gradient(135deg, rgba(103, 232, 249, 0.4), rgba(34, 211, 238, 0.4));
-      transform: scale(1.05);
-    }
-
-    footer {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #bae6fd, #dbeafe, #e0f2fe);
-      color: #1e293b;
-      margin-top: 100px;
-      animation: footerSlideIn 1s ease-out;
-      position: relative;
-      overflow: hidden;
-    }
-
-    footer::before {
+    .project-image::after {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.1), transparent);
-      animation: footerShine 3s linear infinite;
+      background: linear-gradient(45deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    @keyframes footerShine {
-      0% { left: -100%; }
-      100% { left: 100%; }
+    .project-image:hover::after {
+      opacity: 1;
     }
 
-    @keyframes footerSlideIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
+    .project-content {
+      padding: 2rem;
     }
 
-    footer p {
-      margin: 10px 0;
-      font-size: 18px;
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .tech-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-tag {
+      background: var(--gradient-main);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
       font-weight: 500;
+      transition: transform 0.3s ease;
     }
 
-    /* Efectos de scroll */
+    .tech-tag:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    .contact-item i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .footer-text {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hero {
+        padding: 6rem 1rem 2rem;
+      }
+      
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .profile-photo {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Scroll animations */
     .scroll-reveal {
       opacity: 0;
       transform: translateY(50px);
@@ -535,180 +602,298 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 48px; }
-      header p { font-size: 18px; }
-      nav { padding: 15px 20px; }
-      .nav-links { gap: 20px; }
-      .about-content { gap: 30px; }
-      .profile-photo { width: 180px; height: 180px; }
-      .projects-grid { grid-template-columns: 1fr; gap: 30px; }
-    }
   </style>
 </head>
 <body>
-  <!-- Partículas flotantes -->
   <div class="particles"></div>
 
-  <nav>
-    <div class="logo">VG</div>
-    <ul class="nav-links">
-      <li style="--i: 1"><a href="#about">Sobre mí</a></li>
-      <li style="--i: 2"><a href="#projects">Proyectos</a></li>
-      <li style="--i: 3"><a href="#contact">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <header>
-    <h1>Vida Gabriela Sánchez Calva</h1>
-    <p>Estudiante de Ingeniería | Redes | Flutter | Unity 3D VR</p>
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">VG</div>
+      <ul class="nav-links">
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+    </nav>
   </header>
 
-  <section id="about" class="section scroll-reveal">
-    <h2 class="section-title">Sobre mí</h2>
-    <div class="about-content">
-      <div class="profile-card">
-        <img src="images/foto-gabriela.jpg" alt="Vida Gabriela" class="profile-photo">
-      </div>
-      <div class="about-text">
-        <p>Soy estudiante de Ingeniería de Sistemas en la Universidad César Vallejo. Me especializo en cableado de redes, desarrollo móvil con Flutter y modelado de escenarios de realidad virtual en Unity 3D. Mi pasión por la tecnología me impulsa a crear soluciones innovadoras.</p>
-        <div class="skills-list">
-          <span class="skill-tag" style="--i: 1">Redes</span>
-          <span class="skill-tag" style="--i: 2">Flutter</span>
-          <span class="skill-tag" style="--i: 3">Unity 3D</span>
-          <span class="skill-tag" style="--i: 4">VR</span>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Vida Gabriela Sánchez Calva</h1>
+        <h2 class="hero-subtitle">Estudiante de Ingeniería de Sistemas</h2>
+        <p class="hero-description">
+          Soy una estudiante proactiva, resiliente, disciplinada y autodidacta, actualmente cursando el 6to ciclo de Ingeniería de Sistemas en la Universidad César Vallejo. Mi objetivo es adquirir experiencia en desarrollo de tecnología para fortalecer mi carrera, ampliar mis conocimientos y aportar valor a una empresa destacada.
+        </p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fas fa-code"></i> Ver Proyectos
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> Contacto
+          </a>
         </div>
       </div>
+    </section>
+
+    <section id="about" class="section scroll-reveal">
+      <h2 class="section-title">Sobre mí</h2>
+      <div class="about-grid">
+        <div class="profile-image">
+          <img src="images/foto-gabriela.jpg" alt="Vida Gabriela" class="profile-photo">
+        </div>
+        <div class="about-text">
+          <h3>Mi Pasión por la Tecnología</h3>
+          <p>
+            Me especializo en cableado de redes, desarrollo móvil con Flutter y modelado de escenarios de realidad virtual en Unity 3D. He desarrollado proyectos de manera independiente, complementando mis estudios universitarios, y estoy comprometida a aportar lo mejor de mí en cualquier oportunidad que se presente.
+          </p>
+          <p>
+            Mi enfoque está en crear soluciones innovadoras que combinen tecnología de vanguardia con diseño intuitivo, siempre buscando aprender nuevas herramientas y metodologías.
+          </p>
+        </div>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fas fa-network-wired"></i>
+          <h4>Redes</h4>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-flutter"></i>
+          <h4>Flutter</h4>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-unity"></i>
+          <h4>Unity 3D</h4>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-vr-cardboard"></i>
+          <h4>Realidad Virtual</h4>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h4>Desarrollo Móvil</h4>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <h4>Programación</h4>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section scroll-reveal">
+      <h2 class="section-title">Mis Proyectos</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/proyecto1-1.png" alt="Proyecto Red 1">
+            <img src="images/proyecto1-2.png" alt="Proyecto Red 2">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Cableado de Red para Laboratorio</h3>
+            <p class="project-description">
+              Diseñé e instalé el cableado estructurado para un laboratorio de cómputo, conectando 20 equipos con conectores RJ45 siguiendo estándares profesionales y normativas internacionales.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">RJ45</span>
+              <span class="tech-tag">Canaletas</span>
+              <span class="tech-tag">Switch</span>
+              <span class="tech-tag">Cat6</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/proyecto3-1.png" alt="Proyecto VR 1">
+            <img src="images/proyecto3-2.png" alt="Proyecto VR 2">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Escenario VR Educativo</h3>
+            <p class="project-description">
+              Modelé y animé escenas de realidad virtual en Unity 3D para enseñanza de ciencias y un parque virtual interactivo para fomentar el turismo local con experiencias inmersivas.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity 3D</span>
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">VR SDK</span>
+              <span class="tech-tag">3D Modeling</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/proyecto2-1.png" alt="Proyecto App 1">
+            <img src="images/proyecto2-2.png" alt="Proyecto App 2">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Aplicación Móvil Flutter</h3>
+            <p class="project-description">
+              Desarrollé una aplicación completa para gestión de tareas académicas con Flutter, incluyendo interfaz intuitiva, sincronización en tiempo real y notificaciones push.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">API REST</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="footer-content">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>sanchezvida3@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Piura, Perú</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Universidad César Vallejo</span>
+        </div>
+      </div>
+      <p class="footer-text">© 2025 Vida Gabriela Sánchez Calva. Todos los derechos reservados.</p>
     </div>
-  </section>
-
-  <section id="projects" class="section scroll-reveal">
-    <h2 class="section-title">Proyectos</h2>
-    <div class="projects-grid">
-      <div class="project-card" style="--i: 1">
-        <div class="project-image">
-          <img src="images/proyecto1-1.png" alt="Proyecto Red 1">
-          <img src="images/proyecto1-2.png" alt="Proyecto Red 2">
-        </div>
-        <h3 class="project-title">Cableado de Red para Laboratorio</h3>
-        <p class="project-description">Diseñé e instalé el cableado estructurado para un laboratorio de cómputo, conectando 20 equipos con conectores RJ45 siguiendo estándares profesionales.</p>
-        <div>
-          <span class="tech-tag">RJ45</span>
-          <span class="tech-tag">Canaletas</span>
-          <span class="tech-tag">Switch</span>
-        </div>
-      </div>
-
-      <div class="project-card" style="--i: 2">
-        <div class="project-image">
-          <img src="images/proyecto2-1.png" alt="Proyecto VR 1">
-          <img src="images/proyecto2-2.png" alt="Proyecto VR 2">
-        </div>
-        <h3 class="project-title">Escenario VR Educativo</h3>
-        <p class="project-description">Modelé y animé escenas de realidad virtual en Unity 3D para enseñanza de ciencias y un parque virtual interactivo para fomentar el turismo local.</p>
-        <div>
-          <span class="tech-tag">Unity 3D</span>
-          <span class="tech-tag">C#</span>
-          <span class="tech-tag">VR</span>
-        </div>
-      </div>
-
-      <div class="project-card" style="--i: 3">
-        <div class="project-image">
-          <img src="images/proyecto3-1.png" alt="Proyecto App 1">
-          <img src="images/proyecto3-2.png" alt="Proyecto App 2">
-        </div>
-        <h3 class="project-title">Aplicación Móvil Flutter</h3>
-        <p class="project-description">Desarrollé una aplicación completa para gestión de tareas académicas con Flutter, incluyendo interfaz intuitiva y sincronización en tiempo real.</p>
-        <div>
-          <span class="tech-tag">Flutter</span>
-          <span class="tech-tag">Dart</span>
-          <span class="tech-tag">Firebase</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <p><i class="fas fa-envelope"></i> sanchezvida3@gmail.com</p>
-    <p><i class="fas fa-map-marker-alt"></i> Piura, Perú</p>
-    <p>&copy; 2025 Vida Gabriela Sánchez Calva</p>
   </footer>
 
   <script>
-    // Crear partículas flotantes
+    // Tema oscuro/claro
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeIcon = document.getElementById('theme-icon');
+      
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        themeIcon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Cargar tema guardado
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const themeIcon = document.getElementById('theme-icon');
+      
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+      }
+    }
+
+    // Crear partículas
     function createParticles() {
       const particles = document.querySelector('.particles');
-      for (let i = 0; i < 15; i++) {
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
         particles.appendChild(particle);
       }
     }
 
-    // Animación de scroll reveal
-    function scrollReveal() {
+    // Animaciones de scroll
+    function handleScrollAnimations() {
       const elements = document.querySelectorAll('.scroll-reveal');
+      const windowHeight = window.innerHeight;
+      
       elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
         
-        if (elementTop < window.innerHeight - elementVisible) {
+        if (elementTop < windowHeight - 100) {
           element.classList.add('revealed');
         }
       });
     }
 
     // Navegación suave
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+    function smoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    }
+
+    // Efecto parallax
+    function handleParallax() {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+          hero.style.transform = `translateY(${scrolled * 0.3}px)`;
         }
       });
-    });
+    }
 
-    // Efecto parallax en el header
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const header = document.querySelector('header');
-      if (header) {
-        header.style.transform = `translateY(${scrolled * 0.5}px)`;
-      }
-    });
-
-    // Inicializar
+    // Inicialización
     document.addEventListener('DOMContentLoaded', () => {
+      loadTheme();
       createParticles();
-      scrollReveal();
+      handleScrollAnimations();
+      smoothScroll();
+      handleParallax();
       
-      // Animar elementos al cargar
+      // Animación de entrada
       setTimeout(() => {
         document.body.style.opacity = '1';
       }, 100);
     });
 
-    window.addEventListener('scroll', scrollReveal);
+    // Event listeners
+    window.addEventListener('scroll', handleScrollAnimations);
 
-    // Efecto hover en las tarjetas de proyecto
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-15px) scale(1.02) rotateX(5deg)';
-      });
+    // Efecto de typing para el título (opcional)
+    function typeWriter(element, text, speed = 100) {
+      let i = 0;
+      element.innerHTML = '';
       
-      card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      
+      type();
+    }
+
+    // Inicializar efectos adicionales
+    setTimeout(() => {
+      const skillCards = document.querySelectorAll('.skill-card');
+      skillCards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.animation = `fadeInUp 0.6s ease-out forwards`;
+        }, index * 100);
       });
-    });
+    }, 1000);
   </script>
 </body>
 </html>
