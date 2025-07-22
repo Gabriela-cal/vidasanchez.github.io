@@ -2,134 +2,297 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Portafolio de Vida Gabriela</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio | Vida Gabriela Sánchez Calva</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4f8;
-      color: #333;
+      background: #0a0a0f;
+      color: #ffffff;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 24px;
+      background: linear-gradient(135deg, #00c8ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #00c8ff;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     header {
-      background: linear-gradient(270deg, #00c6ff, #0072ff);
-      background-size: 400% 400%;
-      animation: gradient 8s ease infinite;
-      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       text-align: center;
-      padding: 80px 20px;
-    }
-
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      padding: 0 20px;
     }
 
     header h1 {
-      font-size: 42px;
-      margin: 0;
+      font-size: 60px;
+      background: linear-gradient(135deg, #00c8ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     header p {
       font-size: 20px;
-      margin: 10px 0 0;
+      color: #ccc;
+      max-width: 600px;
+      margin-top: 20px;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 50px auto;
+    .section {
+      max-width: 1100px;
+      margin: 100px auto;
       padding: 0 20px;
     }
 
-    section {
-      margin-bottom: 50px;
+    .section-title {
+      font-size: 36px;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #00c8ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    h2 {
-      border-left: 6px solid #0072ff;
-      padding-left: 12px;
-      color: #0072ff;
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
     }
 
-    .project {
-      background: #fff;
-      border-radius: 10px;
+    .profile-card {
+      text-align: center;
+    }
+
+    .profile-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #00c8ff;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .skills-list {
+      margin-top: 20px;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      background: rgba(0, 200, 255, 0.1);
+      color: #00c8ff;
+      border: 1px solid #00c8ff;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin: 5px;
+      font-size: 14px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
       padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      overflow: hidden;
     }
 
-    .project:hover {
-      transform: translateY(-5px);
+    .project-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .project-image img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.5s ease;
+    }
+
+    .project-image img:nth-child(2) {
+      opacity: 0;
+    }
+
+    .project-image:hover img:nth-child(2) {
+      opacity: 1;
+    }
+
+    .project-image:hover img:nth-child(1) {
+      opacity: 0;
+    }
+
+    .project-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .project-description {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .tech-tag {
+      display: inline-block;
+      background: rgba(0, 200, 255, 0.1);
+      color: #00c8ff;
+      border-radius: 20px;
+      padding: 5px 10px;
+      margin: 2px;
+      font-size: 12px;
     }
 
     footer {
-      background: #0072ff;
-      color: #fff;
       text-align: center;
-      padding: 20px 10px;
-    }
-
-    .button {
-      display: inline-block;
+      padding: 40px 20px;
       background: #0072ff;
       color: #fff;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.3s;
     }
-
-    .button:hover {
-      background: #00c6ff;
-    }
-
   </style>
 </head>
 <body>
+
+  <nav>
+    <div class="logo">VG</div>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
 
   <header>
     <h1>Vida Gabriela Sánchez Calva</h1>
     <p>Estudiante de Ingeniería | Redes | Flutter | Unity 3D VR</p>
   </header>
 
-  <div class="container">
-    <section>
-      <h2>Sobre mí</h2>
-      <p>Soy estudiante de Ingeniería en la Universidad César Vallejo. Me especializo en cableado de redes, desarrollo de apps móviles con Flutter y modelado de escenas de realidad virtual en Unity 3D.</p>
-    </section>
+  <section id="about" class="section">
+    <h2 class="section-title">Sobre mí</h2>
+    <div class="about-content">
+      <div class="profile-card">
+        <img src="images/foto-gabriela.jpg" alt="Vida Gabriela" class="profile-photo">
+      </div>
+      <div class="about-text">
+        <p>Soy estudiante de Ingeniería de Sistemas en la Universidad César Vallejo. Me especializo en cableado de redes, desarrollo móvil con Flutter y modelado de escenarios de realidad virtual en Unity 3D.</p>
+        <div class="skills-list">
+          <span class="skill-tag">Redes</span>
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">Unity 3D</span>
+          <span class="skill-tag">VR</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>Proyectos</h2>
-
-      <div class="project">
-        <h3>Cableado de Red para Laboratorio de Cómputo</h3>
-        <p>Diseñé y ejecuté el cableado estructurado para un laboratorio de cómputo, conectando 20 equipos con conectores RJ45 y canaletas para una red estable y organizada.</p>
+  <section id="projects" class="section">
+    <h2 class="section-title">Proyectos</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/proyecto1-1.jpg" alt="Proyecto Red 1">
+          <img src="images/proyecto1-2.jpg" alt="Proyecto Red 2">
+        </div>
+        <h3 class="project-title">Cableado de Red para Laboratorio</h3>
+        <p class="project-description">Diseñé e instalé el cableado estructurado para un laboratorio de cómputo, conectando 20 equipos con conectores RJ45.</p>
+        <div>
+          <span class="tech-tag">RJ45</span>
+          <span class="tech-tag">Canaletas</span>
+          <span class="tech-tag">Switch</span>
+        </div>
       </div>
 
-      <div class="project">
-        <h3>Escenario VR Educativo en Unity 3D</h3>
-        <p>Modelé y animé escenas de realidad virtual en Unity 3D para enseñanza de ciencias y diseñé un parque virtual para fomentar visitas reales mediante experiencias inmersivas.</p>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/proyecto2-1.jpg" alt="Proyecto VR 1">
+          <img src="images/proyecto2-2.jpg" alt="Proyecto VR 2">
+        </div>
+        <h3 class="project-title">Escenario VR Educativo</h3>
+        <p class="project-description">Modelé y animé escenas de realidad virtual en Unity 3D para enseñanza de ciencias y un parque virtual para fomentar visitas reales.</p>
+        <div>
+          <span class="tech-tag">Unity 3D</span>
+          <span class="tech-tag">C#</span>
+          <span class="tech-tag">VR</span>
+        </div>
       </div>
 
-      <div class="project">
-        <h3>Aplicación Móvil con Flutter</h3>
-        <p>Desarrollé una aplicación para gestión de tareas académicas en Flutter. Implementé interfaces intuitivas y funciones de organización de actividades.</p>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/proyecto3-1.jpg" alt="Proyecto App 1">
+          <img src="images/proyecto3-2.jpg" alt="Proyecto App 2">
+        </div>
+        <h3 class="project-title">Aplicación Móvil Flutter</h3>
+        <p class="project-description">Desarrollé una app para gestión de tareas académicas en Flutter. Incluye interfaz intuitiva y organización de actividades.</p>
+        <div>
+          <span class="tech-tag">Flutter</span>
+          <span class="tech-tag">Dart</span>
+          <span class="tech-tag">Firebase</span>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Contacto</h2>
-      <p>Email: sanchezvida3@gmail.com</p>
-      <p>Teléfono: +51 962 331 961</p>
-      <a href="mailto:sanchezvida3@gmail.com" class="button">Contáctame</a>
-    </section>
-  </div>
-
-  <footer>
-    &copy; 2025 Vida Gabriela Sánchez Calva | Portafolio Personal
+  <footer id="contact">
+    <p>Contacto: sanchezvida3@gmail.com | Piura, Perú</p>
+    <p>&copy; 2025 Vida Gabriela Sánchez Calva</p>
   </footer>
 
 </body>
