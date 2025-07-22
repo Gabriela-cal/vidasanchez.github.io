@@ -5,53 +5,87 @@
   <title>Portafolio de Vida Gabriela</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f5f5f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
       color: #333;
     }
+
     header {
-      background: #0073b1;
+      background: linear-gradient(270deg, #00c6ff, #0072ff);
+      background-size: 400% 400%;
+      animation: gradient 8s ease infinite;
       color: #fff;
-      padding: 40px 20px;
       text-align: center;
+      padding: 80px 20px;
     }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header h1 {
+      font-size: 42px;
       margin: 0;
-      font-size: 36px;
     }
+
     header p {
-      margin: 5px 0 0;
-      font-size: 18px;
+      font-size: 20px;
+      margin: 10px 0 0;
     }
+
     .container {
-      max-width: 900px;
-      margin: 40px auto;
+      max-width: 1000px;
+      margin: 50px auto;
       padding: 0 20px;
     }
-    h2 {
-      color: #0073b1;
-      border-bottom: 2px solid #0073b1;
-      padding-bottom: 5px;
+
+    section {
+      margin-bottom: 50px;
     }
+
+    h2 {
+      border-left: 6px solid #0072ff;
+      padding-left: 12px;
+      color: #0072ff;
+    }
+
     .project {
       background: #fff;
+      border-radius: 10px;
       padding: 20px;
       margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
     footer {
-      background: #333;
+      background: #0072ff;
       color: #fff;
       text-align: center;
       padding: 20px 10px;
     }
-    a {
+
+    .button {
+      display: inline-block;
+      background: #0072ff;
       color: #fff;
-      text-decoration: underline;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s;
     }
+
+    .button:hover {
+      background: #00c6ff;
+    }
+
   </style>
 </head>
 <body>
@@ -62,42 +96,40 @@
   </header>
 
   <div class="container">
-    <h2>Sobre mí</h2>
-    <p>
-      Soy estudiante de Ingeniería en la Universidad César Vallejo. Tengo experiencia en cableado de redes con conectores RJ45, desarrollo de aplicaciones móviles en Flutter (Android Studio) y modelado de escenas y objetos 3D para proyectos de realidad virtual en Unity.
-    </p>
+    <section>
+      <h2>Sobre mí</h2>
+      <p>Soy estudiante de Ingeniería en la Universidad César Vallejo. Me especializo en cableado de redes, desarrollo de apps móviles con Flutter y modelado de escenas de realidad virtual en Unity 3D.</p>
+    </section>
 
-    <h2>Proyectos</h2>
+    <section>
+      <h2>Proyectos</h2>
 
-    <div class="project">
-      <h3>Cableado de Red para Laboratorio de Cómputo</h3>
-      <p>
-        Diseñé y ejecuté el cableado estructurado para un laboratorio de cómputo, conectando 20 equipos mediante conectores RJ45. Organicé y aseguré las conexiones usando canaletas para garantizar una red estable, ordenada y funcional.
-      </p>
-    </div>
+      <div class="project">
+        <h3>Cableado de Red para Laboratorio de Cómputo</h3>
+        <p>Diseñé y ejecuté el cableado estructurado para un laboratorio de cómputo, conectando 20 equipos con conectores RJ45 y canaletas para una red estable y organizada.</p>
+      </div>
 
-    <div class="project">
-      <h3>Escenario VR Educativo en Unity 3D</h3>
-      <p>
-        Modelé y animé escenas de realidad virtual en Unity 3D para apoyar la enseñanza de ciencias a nivel escolar y diseñé un parque virtual para fomentar visitas reales mediante experiencias inmersivas interactivas.
-      </p>
-    </div>
+      <div class="project">
+        <h3>Escenario VR Educativo en Unity 3D</h3>
+        <p>Modelé y animé escenas de realidad virtual en Unity 3D para enseñanza de ciencias y diseñé un parque virtual para fomentar visitas reales mediante experiencias inmersivas.</p>
+      </div>
 
-    <div class="project">
-      <h3>Aplicación Móvil con Flutter</h3>
-      <p>
-        Desarrollé una aplicación móvil para gestión de tareas académicas usando Flutter y Android Studio. Implementé interfaces intuitivas y lógica de almacenamiento para facilitar la organización de actividades estudiantiles.
-      </p>
-    </div>
+      <div class="project">
+        <h3>Aplicación Móvil con Flutter</h3>
+        <p>Desarrollé una aplicación para gestión de tareas académicas en Flutter. Implementé interfaces intuitivas y funciones de organización de actividades.</p>
+      </div>
+    </section>
 
-    <h2>Contacto</h2>
-    <p>Email: sanchezvida3@gmail.com</p>
-    <p>Teléfono: +51 962 331 961</p>
+    <section>
+      <h2>Contacto</h2>
+      <p>Email: sanchezvida3@gmail.com</p>
+      <p>Teléfono: +51 962 331 961</p>
+      <a href="mailto:sanchezvida3@gmail.com" class="button">Contáctame</a>
+    </section>
   </div>
 
   <footer>
-    &copy; 2025 Vida Gabriela Sánchez Calva | Diseñado por mí |
-    <a href="mailto:sanchezvida3@gmail.com">Contáctame</a>
+    &copy; 2025 Vida Gabriela Sánchez Calva | Portafolio Personal
   </footer>
 
 </body>
